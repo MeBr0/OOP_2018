@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
 class Converter{
-    public String inWords(int n){
+    public String inWords(int num){
         String res = "";
 
-        if (n == 0){
+        if (num == 0){
             res = "zero";
         }
 
-        else{
-            int first = n / 1000;
-            int second = n % 1000;
+        else {
+            int first = num / 1000;
+            int second = num % 1000;
 
             if (first != 0) {
                 res += this.convertThreeDigits(first) + " thousand";
@@ -25,44 +25,55 @@ class Converter{
                 res += this.convertThreeDigits(second);
             }
         }
+
         return res;
     }
 
-    private String convertThreeDigits(int n) {
+    private String convertThreeDigits(int num) {
         String res = "";
 
-        int a = n / 100;
-        int b = n / 10 % 10;
-        int c = n % 10;
+        int first = num / 100;
+        int second = num / 10 % 10;
+        int third = num % 10;
 
-        if (a != 0) {
-            res += this.convertDigit(a) + " hundred ";
+        if (first != 0) {
+            res += this.convertDigit(first) + " hundred";
 
-            if (b != 0 || c != 0){
+            if (first % 10 != 1){
+                res += "s";
+            }
+
+            res += " ";
+
+            if (second != 0 || third != 0){
                 res += "and ";
             }
         }
 
-        if (b == 1) {
-            res += this.convertSecondDigits(c) + " ";
+        if (second == 1) {
+            res += this.convertSecondDigits(third);
         }
         else {
-            if (b != 0) {
-                res += this.convertSecondDigit(b) + " ";
+            if (second != 0) {
+                res += this.convertSecondDigit(second);
             }
 
-            if (c != 0) {
-                res += this.convertDigit(c);
+            if (third != 0) {
+                if (second != 0){
+                    res += " ";
+                }
+
+                res += this.convertDigit(third);
             }
         }
 
         return res;
     }
 
-    private String convertDigit(int n){
+    private String convertDigit(int num){
         String res = "";
 
-        switch (n){
+        switch (num){
             case 1:
                 res = "one";
                 break;
@@ -94,10 +105,10 @@ class Converter{
         return res;
     }
 
-    private String convertSecondDigit(int n){
+    private String convertSecondDigit(int num){
         String res = "";
 
-        switch (n){
+        switch (num){
             case 2:
                 res = "twenty";
                 break;
@@ -127,10 +138,10 @@ class Converter{
         return res;
     }
 
-    private String convertSecondDigits(int n){
+    private String convertSecondDigits(int num){
         String res = "";
 
-        switch (n){
+        switch (num){
             case 0:
                 res = "ten";
                 break;
