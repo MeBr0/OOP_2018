@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
-public class pr5{
-
-    private static int[] repeat(int[] nums){
+class Array{
+    public static int[] repeat(int[] nums){
         int[] res = new int[2 * nums.length];
 
         for(int i = 0; i < nums.length; ++i){
@@ -13,7 +12,9 @@ public class pr5{
 
         return res;
     }
+}
 
+public class pr5{
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
 
@@ -25,7 +26,7 @@ public class pr5{
             arr[i] = scan.nextInt();
         }
 
-        int res[] = repeat(arr);
+        int res[] = Array.repeat(arr);
 
         for (int i = 0; i < res.length; ++i){
             System.out.print(res[i] + " ");
