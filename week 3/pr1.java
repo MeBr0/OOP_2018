@@ -12,7 +12,7 @@ class Student{
         this.id = id;
         this.yearOfStudy = year++;
     }
-j
+
     public void setName(String newName){
         this.name = newName;
     }
