@@ -5,12 +5,10 @@ class Student{
     private int id;
     private int yearOfStudy;
 
-    private static int year = 1;
-
     Student(String name, int id){
         this.name = name;
         this.id = id;
-        this.yearOfStudy = year++;
+        this.yearOfStudy = 1;
     }
 
     public void setName(String newName){
@@ -27,6 +25,10 @@ class Student{
     }
     public int getYearOfStudy(){
         return this.yearOfStudy;
+    }
+
+    public void nextYear(){
+        this.yearOfStudy++;
     }
 
     public String toString(){
