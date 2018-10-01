@@ -15,7 +15,7 @@ class Student{
         this.name = newName;
     }
     public String getName(){
-        return this.name;
+            return this.name;
     }
     public void setId(int newId){
         this.id = newId;
