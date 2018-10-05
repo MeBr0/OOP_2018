@@ -16,6 +16,7 @@ class Animal {
 
     public void setAge(int age) { this.age = age; }
     public int getAge() { return this.age; }
+
     public void setName(String name) { this.name = name; }
     public String getName() { return this.name; }
 
@@ -36,7 +37,7 @@ class Dog extends Animal {
         super();
     }
 
-    public Dog(String name, int age, String breed) {    // not empty constructor
+    public Dog(String name, int age, String breed) {
         super(name, age);
         this.breed = breed;
     }
@@ -48,7 +49,6 @@ class Dog extends Animal {
 
     public void printInfo(String type) {
         System.out.println("This " + type + " is " + super.getName());  // overloading method printInfo
-                                                                        // by passing some stirng into it
     }
 
 }

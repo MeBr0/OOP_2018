@@ -17,7 +17,16 @@ class Person {
     public String toString(){
         return "name: " + this.name;
     }
-    public boolean equals(Person other){ return (this.name.equals(other.getName())); }
+
+    public boolean equals(Object object){
+        if (object instanceof Person){
+            Person other = (Person) object;
+            return (this.name.equals(other.getName()));
+        }
+        else{
+            return false;
+        }
+    }
 }
 
 class Employee extends Person {
@@ -60,20 +69,29 @@ class Employee extends Person {
         return (name + ", " + salary + ", " + number + ", " + year) ;
     }
 
-    public boolean equals(Employee other) {
-        boolean a = this.insuranceNumber.equals(other.getInsuranceNumber());
-        boolean b = (this.salary == other.getSalary());
-        boolean c = (this.year == other.getYear());
+    public boolean equals(Object object) {
+        if (object instanceof Employee){
+            Employee other = (Employee) object;
+            boolean a = this.insuranceNumber.equals(other.getInsuranceNumber());
+            boolean b = (this.salary == other.getSalary());
+            boolean c = (this.year == other.getYear());
 
-        return a && b && c && super.equals((Person)other);
+            return a && b && c && super.equals((Person)other);
+        }
+        else{
+            return false;
+        }
+
     }
 }
 
 class Manager extends Employee {
 
     private ArrayList<Employee> team;
+    private int bonus;
 
     {
+        bonus = 0;
         team = new ArrayList<Employee>();
     }
 
@@ -96,8 +114,14 @@ class Manager extends Employee {
     public ArrayList<Employee> getTeam() { return team; }
     public void setTeam(ArrayList<Employee> team){ this.team = team; }
 
+    public int getBonus() { return bonus; }
+
     public void addEmployee(Employee e) {
         this.team.add(e);
+    }
+
+    public void addBonus(int a){
+        this.bonus += a;
     }
 
     public String toString() {
@@ -115,15 +139,25 @@ class Manager extends Employee {
 
         a += "], ";
 
-        String b = super.toString();
+        String b = "Bonus: " + String.valueOf(this.bonus);
 
-        return a + " " + b;
+        String c = super.toString();
+
+        return a + " " + b + " " + c;
     }
 
-    public boolean equals(Manager other) {
-        boolean a = this.team.equals(other.getTeam());
+    public boolean equals(Object object) {
+        if (object instanceof Manager){
+            Manager other = (Manager) object;
+            boolean a = this.team.equals(other.getTeam());
+            boolean b = (this.bonus == other.bonus);
 
-        return a & super.equals((Employee)other);
+            return a & b & super.equals((Employee)other);
+        }
+        else {
+            return false;
+        }
+
     }
 }
 
@@ -164,7 +198,7 @@ public class pr3 {
 
         System.out.println(m1);
 
-        Manager m2 = new Manager("AzaM", 12, 12, "123", l);
+        Manager m2 = new Manager("AzaM", 12, 122, "123", l);
 
         m2.addEmployee(e1);
         m2.addEmployee(e2);
