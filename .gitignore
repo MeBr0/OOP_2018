@@ -1,5 +1,4 @@
 *.class
 *.iml
-src/
 .idea/
 .directory.txt
