@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 class Person {
-    private String name;
+    String name;
 
     public Person() {
 
@@ -12,7 +12,7 @@ class Person {
     }
 
     public void setName(String name) { this.name = name; }
-    public String getName() { return name; }
+    public String getName() { return "Name: " + name; }
 }
 
 class Student extends Person {
@@ -26,8 +26,8 @@ class Student extends Person {
     }
 
     public String getName() {
-        System.out.println("Student Name: " + super.getName());
-        return super.getName();
+        System.out.println("Student Name: " + name);
+        return name;
     }
 }
 
@@ -42,8 +42,8 @@ class Employee extends Person {
     }
 
     public String getName() {
-        System.out.println("Employee Name: " + super.getName());
-        return super.getName();
+        System.out.println("Employee Name: " + name);
+        return name;
     }
 }
 

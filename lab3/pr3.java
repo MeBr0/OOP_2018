@@ -76,7 +76,7 @@ class Employee extends Person {
             boolean b = (this.salary == other.getSalary());
             boolean c = (this.year == other.getYear());
 
-            return a && b && c && super.equals((Person)other);
+            return a && b && c && super.equals(other);
         }
         else{
             return false;
