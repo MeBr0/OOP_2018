@@ -57,13 +57,22 @@ public class Employee extends Person implements Comparable, Cloneable {
 
     @Override
     protected Employee clone() throws CloneNotSupportedException {
-        return (Employee) super.clone();
+        Employee clone = (Employee)super.clone();
+
+        clone.hireDate = (Date)hireDate.clone();
+        return clone;
     }
 
     @Override
     public int compareTo(Object o) {
         Employee other = (Employee) o;
 
-        return Double.compare(this.salary, other.salary);
+//        return Double.compare(this.salary, other.salary);
+
+        if (this.salary == other.salary) return 0;
+
+        else if (this.salary > other.salary) return 1;
+
+        else return -1;
     }
 }
