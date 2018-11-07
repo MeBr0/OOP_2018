@@ -1,6 +1,8 @@
 package second;
 
-public class Instructor {
+import java.io.Serializable;
+
+public class Instructor implements Serializable {
     private String firstName;
     private String lastName;
     private String department;

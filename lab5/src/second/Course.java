@@ -1,9 +1,15 @@
 package second;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
     private String courseTitle;
     private Textbook textbook;
     private Instructor instructor;
+
+    public Course() {
+
+    }
 
     public Course(String courseTitle, Textbook textbook, Instructor instructor) {
         this.courseTitle = courseTitle;

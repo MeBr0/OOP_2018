@@ -1,6 +1,8 @@
 package second;
 
-public class Textbook {
+import java.io.Serializable;
+
+public class Textbook implements Serializable {
     private String isbn;
     private String title;
     private String author;
