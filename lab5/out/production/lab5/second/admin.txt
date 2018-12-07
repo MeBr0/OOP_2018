@@ -12,3 +12,11 @@ Password: qwe
 07.11.18 18:17 Admin added new textbook "Azaq"
 07.11.18 18:17 Admin added new instructor FVR DCE
 07.11.18 18:18 Admin added new course "QWERTY"
+09.11.18 14:16 Admin logged in to a system
+09.11.18 14:16 Admin added new textbook "Algo"
+09.11.18 14:17 Admin added new instructor Vladimit Verbovskiy
+09.11.18 14:17 Admin added new course "Diffury"
+09.11.18 14:22 Admin logged in to a system
+09.11.18 14:22 Admin added new textbook "qwe"
+09.11.18 14:22 Admin added new instructor Aza qwe
+09.11.18 14:23 Admin added new course "OOP"

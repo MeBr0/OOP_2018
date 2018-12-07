@@ -4,7 +4,6 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Driver {
@@ -17,7 +16,11 @@ public class Driver {
 
     private final Scanner SCAN = new Scanner(System.in);
 
-    private final String PATH = "/home/dontnicemebr0/IdeaProjects/lab5/src/second/admin.txt";
+    private final String PATH = "/home/dontnicemebr0/IdeaProjects/lab5/src/second/";
+    private final String ADMIN = PATH + "admin.txt";
+    private final String TEXTBOOKS = PATH + "textbooks.out";
+    private final String INSTRUCTORS = PATH + "instructors.out";
+    private final String COURSES = PATH + "courses.out";
 
     private final String I_EXCEPT = "Cannot read from file";
     private final String O_EXCEPT = "Cannot write to file";
@@ -26,6 +29,7 @@ public class Driver {
     private final String ACCESS_DENY = "Access denied!";
     private final String EXIST = "Object already exists!";
     private final String WRONG_DATA = "Wrong input data!";
+    private final String COURSE_INFO = "Do you want to info about any course?";
 
 
     private final String DATE_PATTERN = "dd.MM.yy HH:mm";
@@ -75,7 +79,8 @@ public class Driver {
         }
 
         while (true) {
-            System.out.println("Do you want to info about any course?");
+            System.out.println(COURSE_INFO);
+
             String line = SCAN.nextLine().toLowerCase();
 
             if (line.equals("exit")) {
@@ -92,7 +97,6 @@ public class Driver {
                 }
             }
         }
-
     }
 
     private void admin() {
@@ -168,7 +172,7 @@ public class Driver {
             textbooks.add(textbook);
 
             try {
-                ObjectOutputStream oot = new ObjectOutputStream(new FileOutputStream("textbooks.out"));
+                ObjectOutputStream oot = new ObjectOutputStream(new FileOutputStream(TEXTBOOKS));
 
                 oot.writeObject(textbooks);
 
@@ -218,7 +222,7 @@ public class Driver {
             instructors.add(instructor);
 
             try {
-                ObjectOutputStream oot = new ObjectOutputStream(new FileOutputStream("instructors.out"));
+                ObjectOutputStream oot = new ObjectOutputStream(new FileOutputStream(INSTRUCTORS));
 
                 oot.writeObject(instructors);
 
@@ -279,7 +283,7 @@ public class Driver {
                 courses.add(course);
 
                 try {
-                    ObjectOutputStream oot = new ObjectOutputStream(new FileOutputStream("courses.out"));
+                    ObjectOutputStream oot = new ObjectOutputStream(new FileOutputStream(COURSES));
 
                     oot.writeObject(courses);
 
@@ -296,8 +300,6 @@ public class Driver {
                 }
             }
         }
-
-
     }
 
     private void printInfo(Course c) {
@@ -313,7 +315,7 @@ public class Driver {
 
     private void writeStory(String message) {
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(PATH, true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(ADMIN, true));
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DATE_PATTERN);
 
@@ -335,7 +337,7 @@ public class Driver {
 
     private void loadTextbooks() {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("textbooks.out"));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(TEXTBOOKS));
 
             textbooks = (ArrayList<Textbook>) ois.readObject();
         }
@@ -352,7 +354,7 @@ public class Driver {
 
     private void loadInstructors() {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("instructors.out"));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(INSTRUCTORS));
 
             Object obj = ois.readObject();
 
@@ -371,7 +373,7 @@ public class Driver {
 
     private void loadCourses() {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("courses.out"));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(COURSES));
 
             courses = (ArrayList<Course>) ois.readObject();
         }
@@ -388,7 +390,7 @@ public class Driver {
 
     private void loadPassword() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(PATH));
+            BufferedReader br = new BufferedReader(new FileReader(ADMIN));
 
             String first = br.readLine();
             String second = br.readLine();
